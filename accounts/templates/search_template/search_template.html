@@ -1,0 +1,30 @@
+{% extends "question_template/base_template.html" %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "css/view_search_result.css" %}" />
+{% endblock %}
+{% block body%}
+<div class="search">
+    <h1>Search Result</h1>
+    {% if search %}
+    <ul>
+        <li> <h1> you are searching for the following User ID: {{search}} </h1> </li>
+        <br>
+        {% for usr in user_detail%}
+            <ul>
+                <li> User's Full Name :  &ensp; &ensp;  <b> {{usr.full_name}} </b> </li> 
+                <li>User's Nick Name :   &ensp; &ensp;  <b>  {{usr.nick_name}} </b> </li>
+                <li>User's DOB : &ensp; &ensp;  <b> {{usr.date_of_birth}} </b></li>
+                <li>User's Contact Number : &ensp; &ensp;  <b> {{usr.contact_number}} </b></li>
+                <li>About User : &ensp; &ensp;  <b> {{usr.about}} </b></li>
+                <li>User's Company Name : &ensp; &ensp;  <b> {{usr.company_name}} </b></li>
+                <li>User's Designation : &ensp; &ensp;  <b> {{usr.designation}} </b></li>
+                <li>User's Rating : &ensp; &ensp;  <b>  {{usr.rating_name}} </b></li>                
+            </ul>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <h1>Please provide the correct ID, You have provided the wrong id</h1>
+    {% endif %}        
+</div>
+{% endblock %}

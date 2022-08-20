@@ -1,0 +1,51 @@
+{% load static %}
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?{% now "U" %}"/>
+</head>
+<!DOCTYPE html>
+<html>
+<body class="detail1">
+
+  <div class="detail_heading"> <h1><b>Edit Profile</b></h1></div>
+   <div class="user-menu">
+        <ul>
+        <li><a href="{% url 'index' %}"><button><b>Home</b></button></a></li>
+        <li><a href="{% url 'account_logout' %}"><button><b>Logout</b></button></a></li>
+        </ul>
+    </div>
+<form action="" method="post">
+  {% csrf_token %}
+  {% if user.is_authenticated %}
+  <!-- {{form.as_p}} -->
+  <div class="fieldWrapper">
+    <label for="full_name">Your name: </label>
+    <input id="full_name" type="text" class="form-control" name="full_name" placeholder="Your Name">
+  </div>
+  <div class="fieldWrapper">
+    <label for="date_of_birth">DOB: </label>
+    <input id="date_of_birth" type="date" class="form-control" name="date_of_birth" placeholder="Date of Birth">
+  </div>
+  <div class="fieldWrapper">
+    <label for="contact_number">Contact Number: </label>
+    <input id="contact_number" type="phone" class="form-control" name="contact_number" placeholder="Contact Number">
+  </div>
+  <div class="fieldWrapper">
+    <label for="company_name">Company: </label>
+    <input id="company_name" type="text" class="form-control" name="company_name" placeholder="Company Name">
+  </div>
+  <div class="fieldWrapper">
+    <label for="designation">Designation: </label>
+    <input id="designation" type="text" class="form-control" name="designation" placeholder="designation">
+  </div>
+  <div class="fieldWrapper">
+    <label for="about">About: </label>
+    <input id="about" type="text" class="form-control" name="about" placeholder="About YourSelf">
+  </div>
+  <input type="submit" value="Submit">
+  {% endif %}
+</form>
+{% endblock %}
+</body>
+</html>

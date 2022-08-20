@@ -1,0 +1,18 @@
+{% extends "question_template/base_template.html" %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet"  type="text/css" href="{% static "css/view_question.css" %}" />
+{% endblock %}
+{% block body %}
+    <div class="que">
+        <h1>Detailed view of Individual Question.</h1> <br><br>
+    <ul>        
+        <li>(Q-ID) : {{ question.auto_question_id }}  </li>        
+        (Created At: {{ question.created_at }}) (ASk by: {{question.user_question}}) <br>
+        <br>
+        (Q-Tag) : {{ question.question_title }} <br>
+        <br>
+        (Q-Detail) : {{ question.question_description }}  <a href="{% url 'show_answers' question.auto_question_id %}">[Show Answer]</a>
+    </ul>                 
+    </div>
+{% endblock %}

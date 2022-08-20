@@ -1,0 +1,19 @@
+{% extends "question_template/base_template.html" %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "css/create_answer.css" %}" />
+{% endblock %}
+{% block body %}
+<div class="create_answer">
+    <h1>Provide your answer here</h1>
+    <form method="post">
+        <table>
+        {{ form.as_table }}
+        {% csrf_token %}
+        </table>
+        <br>
+        <br>
+        <input type="submit" value="Save Answer">
+    </form>
+</div>
+{% endblock %}

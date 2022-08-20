@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+
+    {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div class="menu1">
+      
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'account_email' %}"><button><b>Change E-mail</b></button></a></li>
+        <li><a href="{% url 'account_logout' %}"><button><b>Sign Out</b></button></a></li>
+        {% else %}
+        <div class="child">
+        <li><a href="{% url 'account_login' %}"><button><b>Sign In</b></button></a></li>
+        </div>
+        <div class="child">
+        <li><a href="{% url 'account_signup' %}"><button><b>Sign Up</b></button></a></li>
+        </div>
+        {% endif %}
+      </ul>
+    </div>
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+  </body>
+</html>

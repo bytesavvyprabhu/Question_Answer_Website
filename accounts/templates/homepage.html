@@ -1,0 +1,27 @@
+
+{% load static %}
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?{% now "U" %}"/>
+</head>
+<body class="home">
+<div class="page">
+<h1 class="title">Welcome In TS Forum</h1>
+<div class="user-menu">
+  <ul>
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+    <li><a href="{% url 'profile' %}">Edit Profile</a></li>
+    <li><a href="{% url 'view_profile' %}">Profile</a></li>
+    <li><a href="{% url 'home' %}">QA</a></li>
+    <li><a href="{% url 'ask_question' %}">Ask Question</a></li>
+    {% else %}
+    <li><a href="{% url 'account_login' %}">Login</a></li>
+    <li><a href="{% url 'account_signup' %}">Register</a></li>
+    {% endif %}
+  </ul>
+</div>
+</div>
+{% endblock %}
+</body>

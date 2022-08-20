@@ -1,0 +1,69 @@
+{% extends "question_template/base_template.html" %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "css/view_answer.css" %}" />
+{% endblock %}
+{% block body %}
+<style>
+        .card{
+            box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 100%;
+            border-radius: 15px;
+            background-color: rgb(3, 46, 54);
+            height: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card2{
+            box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 100%;
+            border-radius: 15px;
+            background-color: rgb(3, 46, 54);
+            height: 60%;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .card3{
+            box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+            border-radius: 5px;
+            width: 60%;
+            background-color: rgba(5, 84, 96, 0.897);
+
+        }
+
+		.card4{
+            box-shadow: 0 36px 36px 0 rgba(0,0,0,0.2);
+            border-radius: 5px;
+            width: 60%;
+            background-color: rgba(9, 77, 117, 0.813);
+
+        }
+    </style>
+<div id="content">
+    {% for question in questions%}
+    <br>
+            <div class="card" style="width: 50rem; color: aliceblue;">
+				        <ul>
+                            <h5><b>{{question.question_title}}</b></h5>
+                            <div class="card3" style="width: 38rem; color:aliceblue;">
+									<h6><b>{{question.question_description}}</b></h6>
+                                    <br>(Created_At: {{question.created_at}}) (Ask By: {{question.user_question}})<br>
+								</div>
+                        </ul>
+		    </div>
+    {% endfor %}
+</div>
+{% for answe in answers%}
+<br>
+<div class="card" style="width: 40rem; color:aliceblue;">
+        <b> {{answe.answer}} <b>
+        <br> {{answe.created_at}} {{answe.user_answer}}
+</div>
+{% endfor %}
+<a href="{% url 'provide_your_answer' %}"> [You can provide your answer here] </a>
+{% endblock %}

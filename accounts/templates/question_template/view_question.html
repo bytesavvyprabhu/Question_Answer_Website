@@ -1,0 +1,87 @@
+{% extends "question_template/base_template.html" %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet"  type="text/css" href="{% static "css/view_question.css" %}" />
+{% endblock %}
+
+{% block body %}
+    <style>
+        .card{
+            box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 100%;
+            border-radius: 15px;
+            background-color: rgb(3, 46, 54);
+            height: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card2{
+            box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+            border-radius: 5px;
+            width: 60%;
+            background-color: rgb(5, 99, 99);
+
+        }
+
+        .card3{
+            box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+            border-radius: 5px;
+            width: 60%;
+            background-color: rgba(5, 84, 96, 0.897);
+
+        }
+
+		.card4{
+            box-shadow: 0 36px 36px 0 rgba(0,0,0,0.2);
+            border-radius: 5px;
+            width: 60%;
+            background-color: rgba(9, 77, 117, 0.813);
+
+        }
+    </style>
+    <div id="content">
+		{% for question in questions%}
+		<br>
+            <a href="{% url 'show_answers' question.auto_question_id %}"><div class="card" style="width: 50rem; color: aliceblue;">
+				        <ul>
+					        <li> <h4> <b> {{question.question_title}} </b> </h4> </li>
+					        <br>
+							{{question.question_description}}
+								<br>
+								(Created_At: {{question.created_at}}) (Ask By: {{question.user_question}})
+								</br>
+					        <br>
+
+                        </ul>
+		    </div></a>
+		<br>
+		{% endfor %}
+        </div>
+{% endblock %}
+
+    <!-- <table border="2">
+        <thead>
+            <th>Question ID</th>
+            <th>Question Title</th>
+            <th>Question Description</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+        </thead>
+        {% for question in questions%}
+        <tr>
+            <td>{{question.auto_question_id}}</td>
+            <td>{{question.question_title}}</td>
+            <td>{{question.question_description}}</td>
+            <td>{{question.created_at}}</td>
+            <td>{{question.updated_at}}</td>
+        </tr>
+        {% endfor %}
+    </table> -->
+
+<!-- <h1>This is the view_question template </h1> -->
+<!-- <aside>
+                <p>The Rough-skinned Newt defends itself with a deadly neurotoxin.</p>
+    </aside> -->
